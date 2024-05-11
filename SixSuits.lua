@@ -2,7 +2,7 @@
 --- MOD_NAME: Six Suits
 --- MOD_ID: SixSuits
 --- MOD_AUTHOR: [Aure, CrimsonHeart]
---- MOD_DESCRIPTION: This mod adds the Spectrum hand, for use with two new suits: Stars and Moons.
+--- MOD_DESCRIPTION: This mod adds the Spectrum hand, for use with two new suits: 星星和月亮.
 
 ----------------------------------------------
 ------------MOD CODE -------------------------
@@ -13,8 +13,8 @@ function SMODS.INIT.SixSuit()
         'asset_atli')
     local sprite_ui_1 = SMODS.Sprite:new('six_suit_ui_1', six_suit_mod.path, 'ui_assets.png', 18, 18, 'asset_atli')
     local sprite_ui_2 = SMODS.Sprite:new('six_suit_ui_2', six_suit_mod.path, 'ui_assets_opt2.png', 18, 18, 'asset_atli')
-    local sprite_tarot = SMODS.Sprite:new('six_suit_Tarot', six_suit_mod.path, 'Tarots.png', 71, 95, 'asset_atli')
-    local sprite_joker = SMODS.Sprite:new('six_suit_jokers', six_suit_mod.path, 'Jokers.png', 71, 95, 'asset_atli')
+    local sprite_tarot = SMODS.Sprite:new('six_suit_Tarot', six_suit_mod.path, 'Tarots_sixsuits.png', 71, 95, 'asset_atli')
+    local sprite_joker = SMODS.Sprite:new('six_suit_jokers', six_suit_mod.path, 'Jokers_sixsuits.png', 71, 95, 'asset_atli')
     local sprite_blinds = SMODS.Sprite:new('six_suit_Blinds', six_suit_mod.path, 'BlindChips.png', 34, 34,
         'animation_atli', 21)
     sprite_cards_1:register()
@@ -25,9 +25,9 @@ function SMODS.INIT.SixSuit()
     sprite_joker:register()
     sprite_blinds:register()
     -- function SMODS.Card:new_suit(name, card_atlas_low_contrast, card_atlas_high_contrast, card_pos, ui_atlas_low_contrast, ui_atlas_high_contrast, ui_pos, colour_low_contrast, colour_high_contrast)
-    SMODS.Card:new_suit('Moons', 'six_suit_cards_1', 'six_suit_cards_2', { y = 1 }, 'six_suit_ui_1', 'six_suit_ui_2',
+    SMODS.Card:new_suit('月亮', 'six_suit_cards_1', 'six_suit_cards_2', { y = 1 }, 'six_suit_ui_1', 'six_suit_ui_2',
         { x = 1, y = 0 }, '696076', '696076')
-    SMODS.Card:new_suit('Stars', 'six_suit_cards_1', 'six_suit_cards_2', { y = 0 }, 'six_suit_ui_1', 'six_suit_ui_2',
+    SMODS.Card:new_suit('星星', 'six_suit_cards_1', 'six_suit_cards_2', { y = 0 }, 'six_suit_ui_1', 'six_suit_ui_2',
         { x = 0, y = 0 }, 'DF509F', 'DF509F')
     --[[
     SMODS.Card:new_rank('Fake Ace', 100, 'six_suit_cards_1', 'six_suit_cards_2', { x = 12 }, {
@@ -35,8 +35,8 @@ function SMODS.INIT.SixSuit()
         Clubs = { y = 1 },
         Diamonds = { y = 2 },
         Spades = { y = 3 },
-        Stars = { y = 4 },
-        Moons = { y = 5 },
+        星星 = { y = 4 },
+        月亮 = { y = 5 },
     }, {
         face_nominal = 0.5,
         next = {'Ace'}
@@ -46,29 +46,29 @@ function SMODS.INIT.SixSuit()
     SMODS.Card.RANKS['7'].strength_effect = { random = true }
     SMODS.Card.RANKS['Ace'].strength_effect = { ignore = true }
     --]]
-    G.localization.misc['poker_hands']['Spectrum'] = 'Spectrum'
-    G.localization.misc['poker_hands']['Straight Spectrum'] = 'Straight Spectrum'
-    G.localization.misc['poker_hands']['Royal Spectrum'] = 'Royal Spectrum'
-    G.localization.misc['poker_hands']['Spectrum House'] = 'Spectrum House'
-    G.localization.misc['poker_hands']['Spectrum Five'] = 'Spectrum Five'
+    G.localization.misc['poker_hands']['Spectrum'] = '五色'
+    G.localization.misc['poker_hands']['Straight Spectrum'] = '五色顺'
+    G.localization.misc['poker_hands']['Royal Spectrum'] = '皇家五色顺'
+    G.localization.misc['poker_hands']['Spectrum House'] = '五色葫芦'
+    G.localization.misc['poker_hands']['Spectrum Five'] = '五色五条'
     G.localization.misc['poker_hand_descriptions']['Spectrum'] = {
-        [1] = '5 cards, each with a different suit'
+        [1] = '5张花色各不相同的牌'
     }
     G.localization.misc['poker_hand_descriptions']['Straight Spectrum'] = {
-        [1] = '5 cards in a row (consecutive ranks) with',
-        [2] = 'each card having a different suit'
+        [1] = '连续5张牌（点数连续）',
+        [2] = '且花色各不相同'
     }
     G.localization.misc['poker_hand_descriptions']['Royal Spectrum'] = {
-        [1] = '5 cards in a row (consecutive ranks) with',
-        [2] = 'each card having a different suit'
+        [1] = '连续5张牌（点数连续）',
+        [2] = '且花色各不相同'
     }
     G.localization.misc['poker_hand_descriptions']['Spectrum House'] = {
-        [1] = 'A Three of a Kind and a Pair with',
-        [2] = 'each card having a different suit'
+        [1] = '三条及对子',
+        [2] = '且每张牌花色各不相同'
     }
     G.localization.misc['poker_hand_descriptions']['Spectrum Five'] = {
-        [1] = '5 cards with the same rank,',
-        [2] = 'each with a different suit'
+        [1] = '5张点数相同',
+        [2] = '但花色各不相同的牌'
     }
     G.localization.misc.dictionary['k_glass'] = 'Glass'
     G.six_suits = false
@@ -88,31 +88,40 @@ function SMODS.INIT.SixSuit()
         j = j + 1
     end
 
-    local c_gj_273_c = SMODS.Planet:new('GJ 273 c', 'gj_273_c', { hand_type = 'Spectrum' }, { x = 0, y = 0 }, nil, 3, 1,
-        nil, 1, true, false, 'six_suit_Tarot')
-    local c_trappist = SMODS.Planet:new('Trappist', 'trappist', { hand_type = 'Straight Spectrum' }, { x = 1, y = 0 },
-        nil, 3, 1, nil, 1, true, false, 'six_suit_Tarot')
-    local c_kepler = SMODS.Planet:new('Kepler', 'kepler', { hand_type = 'Spectrum House', softlock = true },
-        { x = 2, y = 0 }, nil, 3, 1,
-        nil, 1, true, false, 'six_suit_Tarot')
-    local c_proxima = SMODS.Planet:new('Proxima', 'proxima', { hand_type = 'Spectrum Five', softlock = true },
-        { x = 3, y = 0 }, nil, 3, 1, nil, 1, true, false, 'six_suit_Tarot')
+    local planet_loc_text = {
+        [1] = '（等级#1#）',
+		[2] = '升级{C:attention}#2#',
+		[3] = '{C:mult}+#3#{}倍率并且',
+		[4] = '{C:chips}+#4#{}筹码'
+    }
+    local c_gj_273_c = SMODS.Planet:new('GJ 273 c', 'gj_273_c', { hand_type = 'Spectrum' }, { x = 0, y = 0 }, {
+        name = '鲁坦星c', text = planet_loc_text
+    }, 3, 1, nil, 1, true, false, 'six_suit_Tarot')
+    local c_trappist = SMODS.Planet:new('Trappist', 'trappist', { hand_type = 'Straight Spectrum' }, { x = 1, y = 0 }, {
+        name = '特拉比斯星', text = planet_loc_text
+    }, 3, 1, nil, 1, true, false, 'six_suit_Tarot')
+    local c_kepler = SMODS.Planet:new('Kepler', 'kepler', { hand_type = 'Spectrum House', softlock = true }, { x = 2, y = 0 }, {
+        name = '开普勒星', text = planet_loc_text
+    }, 3, 1, nil, 1, true, false, 'six_suit_Tarot')
+    local c_proxima = SMODS.Planet:new('Proxima', 'proxima', { hand_type = 'Spectrum Five', softlock = true }, { x = 3, y = 0 }, {
+        name = '比邻星', text = planet_loc_text
+    }, 3, 1, nil, 1, true, false, 'six_suit_Tarot')
     c_gj_273_c:register()
     c_trappist:register()
     c_kepler:register()
     c_proxima:register()
 
     local tarot_loc_text = {
-        [1] = 'Converts up to',
-        [2] = '{C:attention}#1#{} selected cards',
-        [3] = 'to {V:1}#2#{}',
+        [1] = '将最多{C:attention}#1#{}张',
+        [2] = '选定卡牌',
+        [3] = '转换为{V:1}#2#{}',
     }
-    local c_inv_star = SMODS.Tarot:new('The Star?', 'inv_star', { suit_conv = 'Stars', max_highlighted = 3 },
+    local c_inv_star = SMODS.Tarot:new('The Star?', 'inv_star', { suit_conv = '星星', max_highlighted = 3 },
         { x = 2, y = 1 },
-        { name = 'The Star?', text = tarot_loc_text }, 3, 1, 'Suit Conversion', true, false, 'six_suit_Tarot')
-    local c_inv_moon = SMODS.Tarot:new('The Moon?', 'inv_moon', { suit_conv = 'Moons', max_highlighted = 3 },
+        { name = '星星？', text = tarot_loc_text }, 3, 1, 'Suit Conversion', true, false, 'six_suit_Tarot')
+    local c_inv_moon = SMODS.Tarot:new('The Moon?', 'inv_moon', { suit_conv = '月亮', max_highlighted = 3 },
         { x = 1, y = 1 },
-        { name = 'The Moon?', text = tarot_loc_text }, 3, 1, 'Suit Conversion', true, false, 'six_suit_Tarot')
+        { name = '月亮？', text = tarot_loc_text }, 3, 1, 'Suit Conversion', true, false, 'six_suit_Tarot')
     c_inv_star:register()
     c_inv_moon:register()
 
@@ -125,12 +134,11 @@ function SMODS.INIT.SixSuit()
     end
 
     local c_inv_fool = SMODS.Spectral:new('The Fool?', 'inv_fool', {}, { x = 9, y = 2 }, {
-        name = 'The Fool?',
+        name = '愚者？',
         text = {
-            [1] = 'Creates the last',
-            [2] = '{C:spectral}Spectral{} card',
-            [3] = 'used during this run',
-            [4] = '{s:0.8,C:spectral}The Fool?{s:0.8} excluded'
+            [1] = '生成本赛局中上一次',
+            [2] = '使用的{C:spectral}幻灵牌{}',
+            [3] = '{s:0.8}不包括{s:0.8,C:spectral}愚者？'
         }
     }, 4, true, false, 'six_suit_Tarot')
     c_inv_fool:register()
@@ -208,69 +216,70 @@ function SMODS.INIT.SixSuit()
         return { last_spectral }, main_end
     end
 
-    local j_envious_joker = SMODS.Joker:new('Envious Joker', 'envious_joker', { extra = { s_mult = 4, suit = 'Stars' } },
+    local j_envious_joker = SMODS.Joker:new('Envious Joker', 'envious_joker', { extra = { s_mult = 4, suit = '星星' } },
         { x = 0, y = 0 }, {
-            name = 'Envious Joker',
+            name = '嫉妒小丑',
             text = {
-                [1] = 'Played cards with',
-                [2] = '{C:stars}#2#{} suit give',
-                [3] = '{C:mult}+#1#{} Mult when scored'
+                [1] = '打出的',
+                [2] = '{C:星星}#2#{}花色牌',
+                [3] = '在计分时给予{C:mult}+#1#{}倍率'
             }
         }, 1, 5, true, false, true, true, 'Suit Mult', 'six_suit_jokers')
     local j_slothful_joker = SMODS.Joker:new('Slothful Joker', 'slothful_joker',
-        { extra = { s_mult = 4, suit = 'Moons' } },
+        { extra = { s_mult = 4, suit = '月亮' } },
         { x = 1, y = 0 }, {
-            name = 'Slothful Joker',
+            name = '懒惰小丑',
             text = {
-                [1] = 'Played cards with',
-                [2] = '{C:moons}#2#{} suit give',
-                [3] = '{C:mult}+#1#{} Mult when scored'
+                [1] = '打出的',
+                [2] = '{C:月亮}#2#{}花色牌',
+                [3] = '在计分时给予{C:mult}+#1#{}倍率'
             }
         }, 1, 5, true, false, true, true, 'Suit Mult', 'six_suit_jokers')
     local j_star_ruby = SMODS.Joker:new('Star Ruby', 'star_ruby', { extra = { odds = 10 } },
         { x = 2, y = 0 }, {
-            name = 'Star Ruby',
+            name = '星辰红宝石',
             text = {
-                [1] = '{C:green}#1# in #2#{} chance for',
-                [2] = 'played cards with {C:stars}Star{} suit',
-                [3] = 'to create a random {C:spectral}Spectral{}',
-                [4] = 'card when scored'
+                [1] = '打出的',
+                [2] = '{C:星星}星星{}花色牌',
+                [3] = '在计分时有{C:green}#1#/#2#{}几率',
+                [4] = '随机生成一张{C:spectral}幻灵牌'
             }
         }, 2, 7, true, false, true, true, nil, 'six_suit_jokers')
     local j_rainbow_moonstone = SMODS.Joker:new('Rainbow Moonstone', 'rainbow_moonstone', { extra = { odds = 2 } },
         { x = 3, y = 0 }, {
-            name = 'Rainbow Moonstone',
+            name = '虹彩月长石',
             text = {
-                [1] = '{C:green}#1# in #2#{} chance for',
-                [2] = 'played cards with {C:moons}Moon{} suit',
-                [3] = 'to become {C:attention}Glass{} Cards'
+                [1] = '打出的',
+                [2] = '{C:月亮}月亮{}花色牌',
+                [3] = '在计分时有{C:green}#1#/#2#{}几率',
+                [4] = '变为{C:attention}玻璃牌'
             }
         }, 2, 7, true, false, true, true, nil, 'six_suit_jokers')
     local j_clan = SMODS.Joker:new('The Clan', 'clan', { Xmult = 2, type = 'Spectrum' },
         { x = 0, y = 1 }, {
-            name = 'The Clan',
+            name = '帮派',
             text = {
-                [1] = '{X:mult,C:white} X#1# {} Mult if played',
-                [2] = 'hand contains',
-                [3] = 'a {C:attention}#2#'
+                [1] = '如果打出的牌中',
+                [2] = '包含{C:attention}#2#',
+                [3] = '{X:mult,C:white} X#1# {}倍率'
             }
         }, 3, 8, true, false, true, true, nil, 'six_suit_jokers')
     local j_manic_joker = SMODS.Joker:new('Manic Joker', 'manic_joker', { t_mult = 10, type = 'Spectrum' },
         { x = 1, y = 1 }, {
-            name = 'Manic Joker',
+            name = '狂躁小丑',
             text = {
-                [1] = '{C:red}+#1#{} Mult if played',
-                [2] = 'hand contains',
-                [3] = 'a {C:attention}#2#'
+                [1] = '如果打出的牌中',
+                [2] = '包含{C:attention}#2#',
+                [3] = '{C:red}+#1#{}倍率'
             }
         }, 1, 4, true, false, true, true, 'Type Mult', 'six_suit_jokers')
     local j_wicked_joker = SMODS.Joker:new('Wicked Joker', 'wicked_joker', { t_chips = 80, type = 'Spectrum' },
         { x = 2, y = 1 }, {
-            name = 'Wicked Joker',
+            name = '捣蛋小丑',
             text = {
-                [1] = '{C:chips}+#1#{} Chips if played',
-                [2] = 'hand contains',
-                [3] = 'a {C:attention}#2#'
+                [1] = '如果打出的牌中',
+                [2] = '包含{C:attention}#2#',
+                [3] = '{C:red}+#1#{}筹码'
             }
         }, 1, 4, true, false, true, true, nil, 'six_suit_jokers')
     j_envious_joker:register()
@@ -281,11 +290,11 @@ function SMODS.INIT.SixSuit()
     j_manic_joker:register()
     j_wicked_joker:register()
     function SMODS.Jokers.j_envious_joker.loc_def(card)
-        return { card.ability.extra.s_mult, localize(card.ability.extra.suit, 'suits_singular') }
+        return { card.ability.extra.s_mult, localize(card.ability.extra.suit, 'suits_plural') }
     end
 
     function SMODS.Jokers.j_slothful_joker.loc_def(card)
-        return { card.ability.extra.s_mult, localize(card.ability.extra.suit, 'suits_singular') }
+        return { card.ability.extra.s_mult, localize(card.ability.extra.suit, 'suits_plural') }
     end
 
     function SMODS.Jokers.j_star_ruby.loc_def(card)
@@ -311,7 +320,7 @@ function SMODS.INIT.SixSuit()
     function SMODS.Jokers.j_star_ruby.calculate(card, context)
         if context.individual and
             context.cardarea == G.play and
-            context.other_card:is_suit('Stars') and
+            context.other_card:is_suit('星星') and
             #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit and
             pseudorandom('starruby') < G.GAME.probabilities.normal / card.ability.extra.odds then
             G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
@@ -336,7 +345,7 @@ function SMODS.INIT.SixSuit()
         if context.before and (context.cardarea == G.jokers) then
             local moons = {}
             for _, v in ipairs(context.full_hand) do
-                if v:is_suit('Moons') and not (v.ability.name == 'Glass Card') and pseudorandom('moonstone') < G.GAME.probabilities.normal / card.ability.extra.odds then
+                if v:is_suit('月亮') and not (v.ability.name == 'Glass Card') and pseudorandom('moonstone') < G.GAME.probabilities.normal / card.ability.extra.odds then
                     moons[#moons + 1] = v
                     v:set_ability(G.P_CENTERS.m_glass, nil, true)
                     G.E_MANAGER:add_event(Event({
@@ -358,20 +367,20 @@ function SMODS.INIT.SixSuit()
     end
 
     local bl_eclipse = SMODS.Blind:new('The Eclipse', 'eclipse', {
-            name = 'The Eclipse',
+            name = '月蚀',
             text = {
-                [1] = 'All Moon cards',
-                [2] = 'are debuffed'
+                [1] = '所有月亮牌',
+                [2] = '都被削弱'
             }
-        }, 5, 2, {}, { suit = 'Moons' }, { x = 0, y = 0 }, { min = 1, max = 10 }, G.C.SUITS['Moons'], false,
+        }, 5, 2, {}, { suit = '月亮' }, { x = 0, y = 0 }, { min = 1, max = 10 }, G.C.SUITS['月亮'], false,
         'six_suit_Blinds')
     local bl_void = SMODS.Blind:new('The Void', 'void', {
-            name = 'The Void',
+            name = '虚无',
             text = {
-                [1] = 'All Star cards',
-                [2] = 'are debuffed'
+                [1] = '所有星星牌',
+                [2] = '都被削弱'
             }
-        }, 5, 2, {}, { suit = 'Stars' }, { x = 0, y = 1 }, { min = 1, max = 10 }, G.C.SUITS['Stars'], false,
+        }, 5, 2, {}, { suit = '星星' }, { x = 0, y = 1 }, { min = 1, max = 10 }, G.C.SUITS['星星'], false,
         'six_suit_Blinds')
     bl_eclipse:register()
     bl_void:register()
