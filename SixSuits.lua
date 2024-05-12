@@ -279,7 +279,7 @@ function SMODS.INIT.SixSuit()
             text = {
                 [1] = '如果打出的牌中',
                 [2] = '包含{C:attention}#2#',
-                [3] = '{C:red}+#1#{}筹码'
+                [3] = '{C:chips}+#1#{}筹码'
             }
         }, 1, 4, true, false, true, true, nil, 'six_suit_jokers')
     j_envious_joker:register()
