@@ -369,16 +369,14 @@ function SMODS.INIT.SixSuit()
     local bl_eclipse = SMODS.Blind:new('The Eclipse', 'eclipse', {
             name = '月蚀',
             text = {
-                [1] = '所有月亮牌',
-                [2] = '都被削弱'
+                [1] = '月亮牌全部失效'
             }
         }, 5, 2, {}, { suit = '月亮' }, { x = 0, y = 0 }, { min = 1, max = 10 }, G.C.SUITS['月亮'], false,
         'six_suit_Blinds')
     local bl_void = SMODS.Blind:new('The Void', 'void', {
             name = '虚无',
             text = {
-                [1] = '所有星星牌',
-                [2] = '都被削弱'
+                [1] = '星星牌全部失效'
             }
         }, 5, 2, {}, { suit = '星星' }, { x = 0, y = 1 }, { min = 1, max = 10 }, G.C.SUITS['星星'], false,
         'six_suit_Blinds')
