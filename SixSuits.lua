@@ -503,6 +503,10 @@ function SMODS.INIT.SixSuit()
         }
         return t
     end
+    
+    -- 单数ERROR修复（城堡等）
+    G.localization.misc['suits_singular']['星星'] = "星星"
+G.localization.misc['suits_singular']['月亮'] = "月亮"
 end
 
 ----------------------------------------------
